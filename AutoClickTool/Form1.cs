@@ -40,7 +40,7 @@ namespace AutoClickTool
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             // 連打を開始/停止
             if (!isStartBarrange)
@@ -60,12 +60,35 @@ namespace AutoClickTool
 
                     // intervalにテキストボックスの値を代入
                     interval = int.Parse(textBox1.Text);
+                    Debug.WriteLine("interval: " + interval);
 
-                    // チェックボックスがチェックされている場合 (msになる)
-                    if (checkBox1.Checked)
+                    // チェックボックスがチェックされていない場合 (秒をmsにする必要がある)
+                    if (!checkBox1.Checked)
                     {
                         // intervalに1000を掛ける
                         interval *= 1000;
+                        Debug.WriteLine("msに変換");
+                    }
+
+                    while (isStartBarrange)
+                    {
+                        // 連打を実行
+                        Debug.WriteLine("待機中");
+
+                        Debug.WriteLine("プログレスバー処理を実行");
+                        Task nowait = ProgressBarCounterAsync();
+                        Debug.WriteLine("プログレスバー処理が完了");
+
+                        Debug.WriteLine("待機");
+                        await Task.Delay(interval);
+                        if (!isStartBarrange)
+                        {
+                            break;
+                        }
+                        
+                        Debug.WriteLine("クリック寸前");
+                        OneClick();
+                        Debug.WriteLine("クリック");
                     }
 
                 } 
@@ -76,6 +99,43 @@ namespace AutoClickTool
                 isStartBarrange = false;
                 Debug.WriteLine("連打を停止");
             }
+        }
+
+        private void OneClick()
+        {
+            // クリックを実行
+            int x = System.Windows.Forms.Cursor.Position.X;
+            int y = System.Windows.Forms.Cursor.Position.Y;
+
+            SetCursorPos(x, y);
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0 ,0 ,0 ,0);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        }
+
+        private async Task ProgressBarCounterAsync()
+        {
+            Debug.WriteLine(interval / 200);
+            if (interval/200 > 3)
+            {
+                Debug.WriteLine($"プログレスバーを進めます{interval / 200} > 200なので");
+                // プログレスバーを進める
+                progressBar1.Value = 0;
+                progressBar1.Maximum = interval/200;
+                progressBar1.Minimum = 0;
+
+                for (int i = 0; i < interval/200; i++)
+                {
+                    progressBar1.Value = i;
+                    await Task.Delay(200);
+                    if (!isStartBarrange)
+                    {
+                        break;
+                    }
+                }
+                progressBar1.Value = progressBar1.Maximum;
+
+            }
+
         }
     }
 }
