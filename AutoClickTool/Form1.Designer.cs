@@ -89,6 +89,7 @@
             label3.Size = new Size(308, 46);
             label3.TabIndex = 4;
             label3.Text = "押しっぱなしにする";
+            label3.Visible = false;
             // 
             // checkBox1
             // 
@@ -111,6 +112,7 @@
             button2.TabIndex = 6;
             button2.Text = "開始";
             button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
             // 
             // progressBar1
             // 
@@ -157,6 +159,7 @@
             button1.TabIndex = 11;
             button1.Text = "バックグラウンドキー検知の設定";
             button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
             // 
             // Form1
             // 
