@@ -40,6 +40,8 @@
             checkBox2 = new CheckBox();
             label5 = new Label();
             button1 = new Button();
+            checkBox3 = new CheckBox();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -145,9 +147,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(338, 136);
             label5.Name = "label5";
-            label5.Size = new Size(414, 17);
+            label5.Size = new Size(421, 17);
             label5.TabIndex = 10;
-            label5.Text = "小数の入力はできないため、n.n秒待機したい場合、msを使用してください";
+            label5.Text = "小数の入力はできないため、小数秒待機したい場合、msを使用してください";
             // 
             // button1
             // 
@@ -158,11 +160,35 @@
             button1.Text = "バックグラウンドキー検知の設定";
             button1.UseVisualStyleBackColor = true;
             // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Checked = true;
+            checkBox3.CheckState = CheckState.Checked;
+            checkBox3.Font = new Font("Noto Sans JP", 16F);
+            checkBox3.Location = new Point(24, 15);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(143, 36);
+            checkBox3.TabIndex = 12;
+            checkBox3.Text = "左クリック";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(162, 27);
+            label6.Name = "label6";
+            label6.Size = new Size(188, 17);
+            label6.TabIndex = 13;
+            label6.Text = "（チェックを外すと右クリック）";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label6);
+            Controls.Add(checkBox3);
             Controls.Add(button1);
             Controls.Add(label5);
             Controls.Add(checkBox2);
@@ -195,5 +221,7 @@
         private CheckBox checkBox2;
         private Label label5;
         private Button button1;
+        private CheckBox checkBox3;
+        private Label label6;
     }
 }
