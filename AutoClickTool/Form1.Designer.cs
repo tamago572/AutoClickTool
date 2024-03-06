@@ -176,7 +176,7 @@
             Controls.Add(barrangeStartBtn);
             Controls.Add(label1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "AutoClickTool";
             ResumeLayout(false);
             PerformLayout();
         }
