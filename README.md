@@ -2,9 +2,7 @@
 
 クリック連打＆押しっぱなしにできるアプリです。
 
-*Pythonでの開発に移行予定です。*
-
-**いずれリポジトリが変わると思います。**
+**[MC-Auto-Click-Toolに移行しました](https://github.com/tamago572/MC-Auto-Click-Tool)**
 
 大変Minecraftで役立ちそうなツールとなっております。
 
